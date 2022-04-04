@@ -1,23 +1,25 @@
-import logo from "./logo.svg";
+import React, { useState } from "react";
+
+import Names from "./Names/Names";
+
+import InitialData from "./babyNamesData.json";
+
 import "./App.css";
 
 function App() {
+  const [filteredNames, setFilteredNames] = useState(InitialData);
+
+  const searchNames = (event) => {
+    const value = event.target.value.toLowerCase();
+    setFilteredNames(
+      InitialData.filter((name) => name.name.toLowerCase().includes(value))
+    );
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type={"text"} onKeyUp={searchNames} />
+      <Names babyNames={filteredNames} />
     </div>
   );
 }
