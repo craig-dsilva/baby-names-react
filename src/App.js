@@ -32,7 +32,7 @@ function App() {
   const removeFavourite = (babyName) => {
     const favouriteNamesCopy = [...favouriteNames];
     const nameListCopy = [...filteredNames];
-    favouriteNamesCopy.splice(filteredNames.indexOf(babyName), 1);
+    favouriteNamesCopy.splice(favouriteNames.indexOf(babyName), 1);
     nameListCopy.push(babyName);
     setFilteredNames(nameListCopy);
     setFavouriteNames(favouriteNamesCopy);
@@ -58,19 +58,19 @@ function App() {
 
   return (
     <div className="App">
-      <input type={"text"} onKeyUp={searchNames} />
-      <button type="radio" onClick={allNames}>
+      <input className="search" type={"text"} onKeyUp={searchNames} />
+      <button className="button" type="radio" onClick={allNames}>
         All
       </button>
       <button
-        className={maleClicked ? "boy" : ""}
+        className={`button ${maleClicked ? "boy" : ""}`}
         type="radio"
         onClick={maleNames}
       >
         Male
       </button>
       <button
-        className={femaleClicked ? "girl" : ""}
+        className={`button ${femaleClicked ? "girl" : ""}`}
         type="radio"
         onClick={femaleNames}
       >

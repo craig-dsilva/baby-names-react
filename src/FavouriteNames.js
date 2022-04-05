@@ -4,7 +4,7 @@ import Name from "./Name";
 
 const FavouriteNames = (props) => {
   return (
-    <ul>
+    <ul className="favourite-names">
       <p className="favourite-names-text">Favourite Names: </p>
       {props.data.map((favouriteName) => (
         <Name
