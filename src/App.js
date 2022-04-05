@@ -10,11 +10,13 @@ import "./App.css";
 function App() {
   const [filteredNames, setFilteredNames] = useState(InitialData);
   const [favouriteNames, setFavouriteNames] = useState([]);
+  const [maleClicked, setMaleClicked] = useState(false);
+  const [femaleClicked, setFemaleClicked] = useState(false);
 
   const searchNames = (event) => {
     const value = event.target.value.toLowerCase();
     setFilteredNames(
-      InitialData.filter((name) => name.name.toLowerCase().includes(value))
+      filteredNames.filter((name) => name.name.toLowerCase().includes(value))
     );
   };
 
@@ -36,9 +38,44 @@ function App() {
     setFavouriteNames(favouriteNamesCopy);
   };
 
+  const allNames = () => {
+    setMaleClicked(false);
+    setFemaleClicked(false);
+    setFilteredNames(InitialData);
+  };
+
+  const maleNames = () => {
+    setMaleClicked(true);
+    setFemaleClicked(false);
+    setFilteredNames(InitialData.filter((babyName) => babyName.sex === "m"));
+  };
+
+  const femaleNames = () => {
+    setFemaleClicked(true);
+    setMaleClicked(false);
+    setFilteredNames(InitialData.filter((babyName) => babyName.sex === "f"));
+  };
+
   return (
     <div className="App">
       <input type={"text"} onKeyUp={searchNames} />
+      <button type="radio" onClick={allNames}>
+        All
+      </button>
+      <button
+        className={maleClicked ? "boy" : ""}
+        type="radio"
+        onClick={maleNames}
+      >
+        Male
+      </button>
+      <button
+        className={femaleClicked ? "girl" : ""}
+        type="radio"
+        onClick={femaleNames}
+      >
+        Female
+      </button>
       <FavouriteNames
         data={favouriteNames}
         removeFromFavourites={removeFavourite}
