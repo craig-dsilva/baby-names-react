@@ -3,3 +3,26 @@
   border: 1px solid #000;
   margin: 5em;
 }
+.names {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+  margin: 5rem;
+}
+
+.name {
+  color: #fff;
+  display: inline;
+  margin-right: 2em;
+}
+
+.boy {
+  background-color: #00f;
+}
+
+.girl {
+  background-color: #f0f;
+}
+
+.favourite-names-text {
+  display: inline;
+}

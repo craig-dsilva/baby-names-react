@@ -1,17 +1,19 @@
 import React from "react";
 
-import "./Names.css";
+import Name from "./Name";
 
 const Names = (props) => {
   return (
     <div className="names">
       {props.babyNames
         .sort((a, b) => a.name.localeCompare(b.name))
-        .map(({ id, name, sex }) => {
+        .map((babyName) => {
           return (
-            <p key={id} className={`name ${sex === "m" ? "boy" : "girl"}`}>
-              {name}
-            </p>
+            <Name
+              key={babyName.id}
+              data={babyName}
+              ammendFavourites={props.addToFavourites}
+            />
           );
         })}
     </div>
