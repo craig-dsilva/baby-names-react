@@ -28,6 +28,10 @@
   margin-right: 2em;
 }
 
+.boy, .girl {
+  border-radius: 50px;
+}
+
 .boy {
   color: #fff;
   background-color: #00f;

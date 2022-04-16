@@ -16,7 +16,11 @@ function App() {
   const searchNames = (event) => {
     const value = event.target.value.toLowerCase();
     setFilteredNames(
-      filteredNames.filter((name) => name.name.toLowerCase().includes(value))
+      InitialData.filter(
+        (name) =>
+          name.name.toLowerCase().includes(value) &&
+          !favouriteNames.includes(name)
+      )
     );
   };
 
